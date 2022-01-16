@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:barcode_scanner/scanbarcode.dart';
+import 'package:barcode_scanner/scanresult.dart';
+
+
 void main()=>
   runApp(MyApp());
 
@@ -21,6 +23,7 @@ class Intro extends StatefulWidget{
 }
 
 class IntroState extends State<Intro> {
+  late ScanBarcodeResult result = ScanBarcodeResult();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +40,8 @@ class IntroState extends State<Intro> {
             SizedBox(
                 child: FloatingActionButton.extended(
                   onPressed: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context)=>ScanBarcodePage()));
+                    Navigator.pushReplacement(
+                      context,MaterialPageRoute(builder: (context) => ScanBarcodeResult()),);
                   },
                   label: Text("Scan Barcode"),
                   icon: Icon(Icons.ac_unit_rounded),
